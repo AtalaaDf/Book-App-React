@@ -1,4 +1,4 @@
-function ErrorPage(){
+function ErrorPage({message}){
     return(
         <>
         <h1>Error page</h1>
