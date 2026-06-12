@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import {Loading} from"../components/Loading"
 import {fetchTrendingBooks} from"../api/bookApi"
 import ErrorPage from"../pages/ErrorPage"
+import BookCard from "../components/BookCard"
+import { ArrowLeft, ArrowRight } from "lucide-react"
 
 function DiscoverPage(){
         const [books, setBooks] = useState([])
@@ -32,7 +34,34 @@ function DiscoverPage(){
     if (error) return <ErrorPage message={error} />
 
     return( 
-    <div>tampilkan books disini</div>
+    <div>
+        <h2>Discover Books</h2>
+
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {books.map((book)=>(
+                <BookCard key={book.key} book={book}/>
+            ))}
+        </div>
+
+            <div className="join">
+                <button onClick={() => setCurrentPage(currentPage -1)} disabled={currentPage === 1}>
+                    <ArrowLeft/>
+                </button>
+
+                {Array.from({length: totalPage}, (_, i) => i +1)
+                .map((page)=>(
+                <button key={page} className={`join-item btn ${page === currentPage ? "btn-active" : ""}`}
+                onClick={() => setCurrentPage(page)}>
+                    {page}
+                </button>
+                ))}
+                
+                <button onClick={()=>setCurrentPage(currentPage +1)} disabled={currentPage === totalPage}>
+                    <ArrowRight/>
+                </button>
+            </div>
+
+    </div>
     )
 }
 

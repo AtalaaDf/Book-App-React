@@ -33,7 +33,7 @@ function BookCard({book}){
                 </h3>
 
                 <p>
-                {book.authors[0]?.name}
+                {book.authors?.[0]?.name}
                 </p>
 
                 <div>
