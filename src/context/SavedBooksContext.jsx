@@ -20,13 +20,13 @@ export function SaveBookProvider({children}){
     function removeBook(id){
         setSavedBook(prev => {
             return prev.filter((book) => {
-                return book.id !== id 
+                return book.key !== id 
             })
         })
     }
 
     function isBookSaved(id){
-        return savedBooks.some((book) => book.id === id)
+        return savedBooks.some((book) => book.key === id)
     }
 
     return(
