@@ -1,15 +1,11 @@
-import { useNavigate } from "react-router-dom"
-import {useSavedBooks} from "../context/SavedBooksContext.jsx"
+import {useSavedBooks} from "../../context/SavedBooksContext.jsx"
 import { BookOpen, Bookmark, BookmarkCheck } from "lucide-react"
 
-
-function BookCard({book}){
-    const navigate = useNavigate()
-    const { isBookSaved, addBook, removeBook } = useSavedBooks()
-    const cover = book.cover_id
-    ? `https://covers.openlibrary.org/b/id/${book.cover_id}-M.jpg`
+export function BookHero({book}){
+    const {isBookSaved, addBook, removeBook } = useSavedBooks()
+    const cover = book.covers?.[0]
+    ? `https://covers.openlibrary.org/b/id/${book.covers[0]}-L.jpg`
     : null
-
 
     function handleSave(){
         if (isBookSaved(book.key)) {
@@ -20,20 +16,20 @@ function BookCard({book}){
     }
 
     return(
-        <div className="card" onClick={() => navigate(`/detail/${book.key.replace('/works/', '')}`)}>
+        <div className="flex gap-8 items-start">
 
-            <div className="card-figure">
+            <div className="w-40 h-56 rounded-lg overflow-hidden bg-base-200 flex items-center justify-center">
                 {cover ? <img src={cover} alt={book.title} /> : <BookOpen/>}
             </div>
 
-            <div className="card-body">
+            <div className="flex-1">
 
-                <h3>
+                <h1>
                 {book.title}
-                </h3>
+                </h1>
 
                 <p>
-                {book.authors?.[0]?.name}
+                {book.authors?.[0]?.author?.name }
                 </p>
 
                 <div>
@@ -41,7 +37,6 @@ function BookCard({book}){
                     {book.first_publish_year}
                 </span>
                 <button onClick={(e)=>{
-                    e.stopPropagation()
                     handleSave()
                 }}>
                 {isBookSaved(book.key) ? <BookmarkCheck/> : <Bookmark/>}
@@ -51,5 +46,3 @@ function BookCard({book}){
         </div>
     )
 }
-
-export default BookCard
