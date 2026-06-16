@@ -1,8 +1,15 @@
+import { useNavigate } from "react-router-dom"
+import { ArrowLeft } from "lucide-react"
+
 function ErrorPage({message}){
+    const navigate = useNavigate()
     return(
-        <>
-        <h1>Error page</h1>
-        </>
+        <div>
+        <h1>{message}</h1>
+        <button onClick={() => navigate('/')}>
+            <ArrowLeft/>
+        </button>
+        </div>
     )
 }
 
