@@ -5,6 +5,7 @@ import DiscoverPage from "../pages/DiscoverPage"
 import NotFoundPage from "../pages/NotFoundPage"
 import PopularPage from "../pages/PopularPage"
 import SavedPage from "../pages/SavedPage"
+import SearchPage from "../pages/SearchPage"
 import Layout from "../components/Layout"
 
 function Index(){
@@ -17,6 +18,7 @@ function Index(){
                 <Route path="/popular" element={<PopularPage/>}/>
                 <Route path="/detail/:id" element={<DetailPage/>}/>
                 <Route path="/saved" element={<SavedPage/>}/>
+                <Route path="/search/:keyword" element={<SearchPage/>}/>
             </Route>
             <Route path="*" element={<NotFoundPage/>}/>
         </Routes>
