@@ -1,6 +1,6 @@
 import {Outlet} from "react-router-dom"
 import Navbar from "../components/Navbar"
-import SearchPopup from "./SearchPopup"
+import SearchPopup from "../components/SearchPopup"
 import Footer from "../components/Footer"
 import {useTheme} from "../context/ThemeContext"
 import {useSearch} from "../context/SearchContext"
