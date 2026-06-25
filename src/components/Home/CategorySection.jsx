@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 
-    const arr = ["Romance", "Fiction", "Non-Fiction", "Mistery",
+    const arr = ["Romance", "Fiction", "Non-Fiction", "Mystery",
                 "Science-Ficton", "fantasy", "Horror", "History", "Advanture"
      ]
 
