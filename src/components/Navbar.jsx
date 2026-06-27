@@ -11,8 +11,10 @@ function Navbar(){
     const { toggleSearch } = useSearch()
     const [scroll, setScroll] = useState(0)
     const progress = Math.min(scroll / 200, 1)
-    const opacity = 1 - (progress * 0.7)
+    const opacity = 1 - (progress * 0.4)
     const width = 100 - (progress * 70)
+    const radius = progress * 9999
+    const top = progress * 16
 
     useEffect(() => {
     function handleScroll() {
@@ -28,8 +30,8 @@ function Navbar(){
 
     return(
         <nav 
-            className="navbar sticky bg-base-100 shadow-sm fixed top-0 left-0 right-0 transition-all duration-300 z-10"
-            style={{ opacity: opacity, width: `${width}%`, margin: '0 auto' }}
+            className="navbar sticky bg-base-100 shadow-sm fixed left-0 right-0 transition-all duration-300 z-10"
+            style={{ opacity: opacity, width: `${width}%`, margin: '0 auto', borderRadius: `${radius}px`, top: `${top}px` }}
         >
 
             <div className="navbar-start">
