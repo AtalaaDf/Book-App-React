@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import {useSavedBooks} from "../context/SavedBooksContext.jsx"
 import { BookOpen, Bookmark, BookmarkCheck } from "lucide-react"
+import { motion } from "motion/react"
+import { cardVariant } from "../animations/variants.js"
 
 
 function BookCard({book}){
@@ -20,10 +22,20 @@ function BookCard({book}){
     }
 
     return(
-        <div className="card" onClick={() => navigate(`/detail/${book.key.replace('/works/', '')}`)}>
+        <motion.div
+        variants={cardVariant}
+        initial="hidden"
+        animate="visible"
+        whileHover="hover"
+        className="card cursor-pointer rounded-xl overflow-hidden bg-base-100 shadow-sm" 
+        onClick={() => navigate(`/detail/${book.key.replace('/works/', '')}`)}>
 
-            <div className="card-figure">
-                {cover ? <img src={cover} alt={book.title} /> : <BookOpen/>}
+            <div className="h-48 overflow-hidden">
+                {cover ? <img src={cover} alt={book.title} 
+                className="h-48 w-full object-cover"
+                /> : <div className="h-48 flex items-center justify-center bg-base-200">
+                    <BookOpen className="w-12 h-12 text-base-content/30"/>
+                     </div>}
             </div>
 
             <div className="card-body">
@@ -36,7 +48,7 @@ function BookCard({book}){
                 {book.authors?.[0]?.name}
                 </p>
 
-                <div>
+                <div className="flex justify-between items-center">
                 <span className="badge badge-ghost">
                     {book.first_publish_year}
                 </span>
@@ -48,7 +60,7 @@ function BookCard({book}){
                 </button>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
