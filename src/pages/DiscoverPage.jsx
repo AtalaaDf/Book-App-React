@@ -6,6 +6,7 @@ import BookCard from "../components/BookCard"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import { motion } from "motion/react"
 import { cardVariant, staggerContainer } from "../animations/variants"
+import FadeIn from "../components/FadeIn"
 
 function DiscoverPage(){
         const [books, setBooks] = useState([])
@@ -35,10 +36,13 @@ function DiscoverPage(){
 
     if (error) return <ErrorPage message={error} />
 
-    return( 
-    <div>
-        <h2>Discover Books</h2>
+    return(
+        <div>
+            <FadeIn>
+                <h2>Discover Books</h2>
+            </FadeIn>
 
+            <FadeIn>
         <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -51,7 +55,9 @@ function DiscoverPage(){
                 </motion.div>
             ))}
         </motion.div>
+            </FadeIn>
 
+                <FadeIn>
             <div className="join">
                 <button onClick={() => setCurrentPage(currentPage -1)} disabled={currentPage === 1}>
                     <ArrowLeft/>
@@ -59,8 +65,8 @@ function DiscoverPage(){
 
                 {Array.from({length: totalPage}, (_, i) => i +1)
                 .map((page)=>(
-                <button key={page} className={`join-item btn ${page === currentPage ? "btn-active" : ""}`}
-                onClick={() => setCurrentPage(page)}>
+                    <button key={page} className={`join-item btn ${page === currentPage ? "btn-active" : ""}`}
+                    onClick={() => setCurrentPage(page)}>
                     {page}
                 </button>
                 ))}
@@ -69,7 +75,7 @@ function DiscoverPage(){
                     <ArrowRight/>
                 </button>
             </div>
-
+                </FadeIn>
     </div>
     )
 }
