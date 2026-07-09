@@ -1,4 +1,4 @@
-{/*Fade In */}
+/*Fade In */
 export const fadeIn = {
     hidden: { 
         opacity: 0
@@ -12,7 +12,7 @@ export const fadeIn = {
     }
 }
 
-{/*Card */}
+/*Card */
 export const cardVariant = {
     hidden: { 
         opacity: 0, 
@@ -35,7 +35,7 @@ export const cardVariant = {
     }
 }
 
-{/*Staggerred Children */}
+/*Staggerred Children */
 export const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
@@ -46,7 +46,7 @@ export const staggerContainer = {
     }
 }
 
-{/*Carousel */}
+/*Carousel */
 export const slideFromLeft = {
     hidden: { 
         opacity: 0, 
@@ -62,7 +62,7 @@ export const slideFromLeft = {
     }
 }
 
-{/*Bookmark */}
+/*Bookmark */
 export const bookmarkFloat = {
     initial: { 
         opacity: 1, 

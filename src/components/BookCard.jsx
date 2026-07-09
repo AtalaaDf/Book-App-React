@@ -23,10 +23,8 @@ function BookCard({book}){
 
     return(
         <motion.div
-        variants={cardVariant}
-        initial="hidden"
-        animate="visible"
-        whileHover="hover"
+        whileHover={{ y: -8, scale: 1.03 }} 
+        transition={{ duration: 0.2 }}
         className="card cursor-pointer rounded-xl overflow-hidden bg-base-100 shadow-sm" 
         onClick={() => navigate(`/detail/${book.key.replace('/works/', '')}`)}>
 

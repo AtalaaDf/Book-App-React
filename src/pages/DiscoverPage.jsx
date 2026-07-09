@@ -4,6 +4,8 @@ import {fetchTrendingBooks} from"../api/bookApi"
 import ErrorPage from"../pages/ErrorPage"
 import BookCard from "../components/BookCard"
 import { ArrowLeft, ArrowRight } from "lucide-react"
+import { motion } from "motion/react"
+import { cardVariant, staggerContainer } from "../animations/variants"
 
 function DiscoverPage(){
         const [books, setBooks] = useState([])
@@ -37,11 +39,18 @@ function DiscoverPage(){
     <div>
         <h2>Discover Books</h2>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {books.map((book)=>(
-                <BookCard key={book.key} book={book}/>
+                <motion.div key={book.key} variants={cardVariant}>
+                    <BookCard book={book}/>
+                </motion.div>
             ))}
-        </div>
+        </motion.div>
 
             <div className="join">
                 <button onClick={() => setCurrentPage(currentPage -1)} disabled={currentPage === 1}>
