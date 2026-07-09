@@ -1,5 +1,6 @@
 import {useSavedBooks} from "../context/SavedBooksContext"
 import BookCard from "../components/BookCard"
+import FadeIn from "../components/FadeIn"
 
 function SavedPage(){
     const { savedBooks } = useSavedBooks()
@@ -7,11 +8,13 @@ function SavedPage(){
         return <p>Buku belum tersimpan</p>
     }
     return(
+        <FadeIn>
         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-4">
         {savedBooks.map((book) => (
-        <BookCard key={book.key} book={book}/>
+            <BookCard key={book.key} book={book}/>
         ))}
-</div>
+        </div>
+        </FadeIn>
     )
 }
 

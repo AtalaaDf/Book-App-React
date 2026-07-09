@@ -4,6 +4,7 @@ import {fetchPopularBooks} from"../api/bookApi"
 import ErrorPage from"../pages/ErrorPage"
 import BookCard from "../components/BookCard"
 import { ArrowLeft, ArrowRight } from "lucide-react"
+import FadeIn from "../components/FadeIn"
 
 function PopularPage(){
         const [books, setBooks] = useState([])
@@ -35,7 +36,9 @@ function PopularPage(){
 
     return( 
     <div>
+        <FadeIn>
         <h2>Popular Books</h2>
+        </FadeIn>
 
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {books.map((book)=>(
@@ -43,6 +46,7 @@ function PopularPage(){
             ))}
         </div>
 
+                <FadeIn>
             <div className="join">
                 <button onClick={() => setCurrentPage(currentPage -1)} disabled={currentPage === 1}>
                     <ArrowLeft/>
@@ -50,8 +54,8 @@ function PopularPage(){
 
                 {Array.from({length: totalPage}, (_, i) => i +1)
                 .map((page)=>(
-                <button key={page} className={`join-item btn ${page === currentPage ? "btn-active" : ""}`}
-                onClick={() => setCurrentPage(page)}>
+                    <button key={page} className={`join-item btn ${page === currentPage ? "btn-active" : ""}`}
+                    onClick={() => setCurrentPage(page)}>
                     {page}
                 </button>
                 ))}
@@ -60,6 +64,7 @@ function PopularPage(){
                     <ArrowRight/>
                 </button>
             </div>
+                </FadeIn>
 
     </div>
     )

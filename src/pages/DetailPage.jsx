@@ -8,6 +8,7 @@ import {BookMeta} from '../components/Detail/BookMeta'
 import {BookSubjects} from '../components/Detail/BookSubjects'
 import {BookSynopsis} from '../components/Detail/BookSynopsis'
 import { ArrowLeft } from "lucide-react"
+import FadeIn from "../components/FadeIn"
 
 function DetailPage(){
     const [book, setBook] = useState(null)
@@ -41,10 +42,22 @@ function DetailPage(){
         <button onClick={() => navigate(-1)}>
         <ArrowLeft/>
         </button>
+
+        <FadeIn>
         <BookHero book={book}/>
+        </FadeIn>
+
+        <FadeIn>    
         <BookMeta book={book}/>
+        </FadeIn>
+
+        <FadeIn>
         <BookSubjects book={book}/>
+        </FadeIn>
+        
+        <FadeIn>
         <BookSynopsis book={book}/>
+        </FadeIn>
         </>
     )
 }

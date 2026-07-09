@@ -4,6 +4,7 @@
     import {searchBooks} from"../api/bookApi"
     import ErrorPage from"../pages/ErrorPage"
     import BookCard from "../components/BookCard"
+import FadeIn from "../components/FadeIn"
 
 function SearchPage(){
     const [books, setBooks] = useState([])
@@ -33,11 +34,13 @@ function SearchPage(){
         if (error) return <ErrorPage message={error} />
 
     return(
+            <FadeIn>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {books.map((book)=>(
                 <BookCard key={book.key} book={book}/>
             ))}
         </div>
+            </FadeIn>
     )
 }
 export default SearchPage
