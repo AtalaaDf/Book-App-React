@@ -12,7 +12,7 @@
             }
 
         return( 
-            <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+            <div className="z-50 fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
             <input type="text" value={keyword} onChange={(e) => {setKeyword(e.target.value)}} 
             onKeyDown={e => { if (e.key === 'Enter') handleSearch()}}/>
             <button onClick={handleSearch}><ArrowRight/></button>

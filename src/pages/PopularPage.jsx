@@ -5,6 +5,8 @@ import ErrorPage from"../pages/ErrorPage"
 import BookCard from "../components/BookCard"
 import { ArrowLeft, ArrowRight } from "lucide-react"
 import FadeIn from "../components/FadeIn"
+import { motion } from "motion/react"
+import { cardVariant, staggerContainer } from "../animations/variants"
 
 function PopularPage(){
         const [books, setBooks] = useState([])
@@ -40,11 +42,20 @@ function PopularPage(){
         <h2>Popular Books</h2>
         </FadeIn>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {books.map((book)=>(
-                <BookCard key={book.key} book={book}/>
+                <motion.div 
+                variants={cardVariant}
+                 key={book.key}>
+                    <BookCard book={book}/>
+                </motion.div>
             ))}
-        </div>
+        </motion.div>
 
                 <FadeIn>
             <div className="join">
